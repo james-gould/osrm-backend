@@ -285,6 +285,8 @@ endif()
 # Disallow deprecated protozero APIs
 add_definitions(-DPROTOZERO_STRICT_API)
 
+find_package(Threads REQUIRED)
+
 if(ENABLE_MASON)
   message(STATUS "Enabling mason")
   if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.mason/mason.cmake")
@@ -368,7 +370,6 @@ else()
 
   add_dependency_includes(${Boost_INCLUDE_DIRS})
 
-  find_package(Threads REQUIRED)
   find_package(TBB REQUIRED)
   add_dependency_includes(${TBB_INCLUDE_DIR})
   if(WIN32 AND CMAKE_BUILD_TYPE MATCHES Debug)
