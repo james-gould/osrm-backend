@@ -37,7 +37,8 @@ matrix:
       compiler: "mason-debug"
       addons:
         apt:
-          packages: ['libgdal-dev', 'ccache']
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['libstdc++-5-dev', 'libgdal-dev', 'ccache']
       env: CLANG_VERSION='3.9.0' CLANG_PACKAGE="llvm" BUILD_TYPE='Debug' CMAKE_ARGS="-DENABLE_MASON=ON"
 
     # Debug Builds

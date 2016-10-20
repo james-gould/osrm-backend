@@ -309,6 +309,7 @@ if(ENABLE_MASON)
   set(Boost_LIBRARIES ${Boost_LIBRARIES} ${MASON_PACKAGE_boost_libregex_STATIC_LIBS})
   mason_use(boost_libtest VERSION 1.61.0)
   set(Boost_LIBRARIES ${Boost_LIBRARIES} ${MASON_PACKAGE_boost_libtest_STATIC_LIBS})
+  set(BoostUnitTestLibrary ${MASON_PACKAGE_boost_libtest_STATIC_LIBS})
   mason_use(boost_libdate_time VERSION 1.61.0)
   set(Boost_LIBRARIES ${Boost_LIBRARIES} ${MASON_PACKAGE_boost_libdate_time_STATIC_LIBS})
   mason_use(boost_libthread VERSION 1.61.0)
@@ -356,6 +357,12 @@ else()
   set(OSMIUM_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/libosmium/include")
   find_package(Osmium REQUIRED COMPONENTS io)
   add_dependency_includes(${OSMIUM_INCLUDE_DIR})
+
+  # first get library for just unit_test
+  set(AllBoostLibrariesExceptUnitTest ${Boost_LIBRARIES})
+  find_package(Boost 1.49.0 REQUIRED COMPONENTS unit_test_framework)
+  # After the find_package call we got only the unit test library
+  set(BoostUnitTestLibrary ${Boost_LIBRARIES})
 
   find_package(Boost 1.49.0 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 

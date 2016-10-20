@@ -44,15 +44,9 @@ add_executable(util-tests
 	$<TARGET_OBJECTS:UTIL>)
 
 
-# FindPackage below overwrites Boost_LIBRARIES
-set(AllBoostLibrariesExceptUnitTest ${Boost_LIBRARIES})
-
 if(NOT WIN32 AND NOT Boost_USE_STATIC_LIBS)
   add_definitions(-DBOOST_TEST_DYN_LINK)
 endif()
-
-# After the find_package call we got only the unit test library
-set(BoostUnitTestLibrary ${Boost_LIBRARIES})
 
 target_include_directories(engine-tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(library-tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
