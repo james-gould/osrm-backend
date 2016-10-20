@@ -547,7 +547,7 @@ install(TARGETS osrm_store DESTINATION lib)
 
 list(GET ENGINE_LIBRARIES 1 ENGINE_LIBRARY_FIRST)
 foreach(lib ${ENGINE_LIBRARIES})
-  get_filename_component(ENGINE_LIBRARY_PATH "${ENGINE_LIBRARY_FIRST}" PATH)
+  get_filename_component(ENGINE_LIBRARY_PATH "${lib}" PATH)
   get_filename_component(ENGINE_LIBRARY_NAME "${lib}" NAME_WE)
   string(REPLACE "lib" "" ENGINE_LIBRARY_NAME ${ENGINE_LIBRARY_NAME})
   string(REPLACE "-l" "" ENGINE_LIBRARY_NAME ${ENGINE_LIBRARY_NAME})
