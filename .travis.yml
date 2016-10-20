@@ -152,6 +152,7 @@ install:
       sudo ldconfig
     fi
   - popd
+  - pkg-config libosrm --debug
   - mkdir example/build && pushd example/build
   - cmake .. -DCMAKE_BUILD_TYPE=${BUILD_TYPE}
   - make
